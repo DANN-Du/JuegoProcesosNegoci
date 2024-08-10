@@ -29,9 +29,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                text-align: center;
                 color: white;
                 flex: 0 0 100%;
-                margin-top: 20%;
+                margin-top: 10%;
             }
 
             .QuestionBlock p{
@@ -76,27 +77,32 @@
 
         <script>
             function ChangeQuestion(){
+                var ListQuestion = ["¿Cual es la Importancia de los Nichos?", "¿Cual es la empresa que mas usas actualmente?", "¿Cual es la importancia de la publicidad?"];
+                var ListAnswer1 = [] //Agregar todas las respuestas que iran en la casilla 1
+                var ListAnswer2 = [] //Agregar todas las respuestas que iran en la casilla 2
+                var ListAnswer3 = [] //Agregar todas las respuestas que iran en la casilla 3
+                var ListAnswer4 = [] //Agregar todas las respuestas que iran en la casilla 4
                 document.getElementById("Question").innerHTML = [];
+
             }
         </script>
 
-        
     </head>
 
     <body>
         <div class="Container">
             <div class="QuestionBlock">
-                <p id="Question">Cambiar</p>
+                <p id="Question">"¿Cuales son los principales problemas en las empresas?"</p>
             </div>
     
             <div class="AnswerBlock1">
-                <button id="Answer1"></button>
-                <button id="Answer2"></button>
+                <button id="Answer1">Porque si</button>
+                <button id="Answer2">Yo que voy a saber</button>
             </div>
     
             <div class="AnswerBlock2">
-                <button id="Answer3"></button>
-                <button id="Answer4"></button>
+                <button id="Answer3">Por culpa de petro</button>
+                <button id="Answer4">Mejor los busco en Chat Gpt</button>
             </div>
         </div>
     </body>
