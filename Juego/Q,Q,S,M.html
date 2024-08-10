@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quien Quiere Ser Millonario</title>
+
+        <style>
+            body{
+                background-image: url(Imagenes/FondoBody2.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .Container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                width: 920px;
+                justify-content: center;
+            }
+
+            .QuestionBlock{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                width: 900px;
+                height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                flex: 0 0 100%;
+                margin-top: 20%;
+            }
+
+            .QuestionBlock p{
+                font-size: 70px;
+                color: white;
+            }
+
+            .AnswerBlock1 button{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                width: 400px;
+                width: 100%;
+                height: 100%;
+                margin: 2%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 35px;
+                color: white;
+            }
+
+            .AnswerBlock2 button{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                width: 400px;
+                width: 100%;
+                height: 100%;
+                margin: 2%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 35px;
+                color: white;
+            }
+
+            .AnswerBlock1{
+                flex: 0 0 400px;
+            }
+
+            .AnswerBlock2{
+                flex: 0 0 400px;
+            }
+        </style>
+
+        <script>
+            function ChangeQuestion(){
+                document.getElementById("Question").innerHTML = [];
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="Container">
+            <div class="QuestionBlock">
+                <p id="Question">Cambiar</p>
+            </div>
+    
+            <div class="AnswerBlock1">
+                <button id="Answer1"></button>
+                <button id="Answer2"></button>
+            </div>
+    
+            <div class="AnswerBlock2">
+                <button id="Answer3"></button>
+                <button id="Answer4"></button>
+            </div>
+        </div>
+    </body>
+</html>

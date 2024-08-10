@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Equipo 3</title>
+
+        <style>
+            body{
+                background-image: url(ImagenesIndex/FondoBody.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            marquee{
+                background: transparent;
+                backdrop-filter: blur(15px);
+                color: #ffffff;
+                font-size: 90px;
+                font-family: Arial;
+                margin: 5% 25%;
+                border: white 2px solid;
+            }
+
+            .Presentation1{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0% 0%; 
+            }
+
+            .Presentation1 button{
+                margin: 0% 5%;
+                font-size: 45px;
+                width: 500px;
+                height: 100px;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            }
+
+            .Presentation1 a{
+                margin: 0% 5%;
+            }
+
+            .Presentation2{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0% 0%; 
+            }
+
+            .Presentation2 button{
+                margin: 0% 5%;
+                font-size: 45px;
+                width: 500px;
+                height: 100px;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            }
+
+            .Presentation2 a{
+                margin: 0% 5%;
+            }
+
+            button:hover{
+                transform: scale(1.1);
+                background-color: red;
+                transition: 0.5s;
+            }
+
+            #Correct:hover{
+                background-color: green;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <marquee behavior="scroll" direction="left">¿Quienes somos?</marquee> <!--Colocar Margen-->
+            <div class="Presentation1">
+                <a href="Juego/Q,Q,S,M.html"><button id="Correct">Los vagos de ATRAS</button></a>
+                <a href="Juego/Q,Q,S,M.html"><button>Siga y dejenos en paz</button></a>
+            </div><br>
+    
+            <div class="Presentation2">
+            <a href="Juego/Q,Q,S,M.html"><button>Los vagos de ATRAS</button></a>
+                <a href="Juego/Q,Q,S,M.html"><button>------------------</button></a>
+            </div>
+<!--Colocar botones "Instrucciones" y "Start|"-->
+
+
+    </body>
+</html>
