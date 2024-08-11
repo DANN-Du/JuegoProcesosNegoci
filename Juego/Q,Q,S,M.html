@@ -238,7 +238,7 @@
                     window.location.href = "Start.html";
                 }
                 var questionData = questions[QuestionIndex];  //Obtener la pregunta del indice actual
-                document.getElementById("Question").innerText = "Señ@r "+ Name + ", " + questionData.Question; //Mostrar la pregunta en el HTML
+                document.getElementById("Question").innerText = Name + ", " + questionData.Question; //Mostrar la pregunta en el HTML
                 const answerButtons = document.querySelectorAll('.answer');
                 answerButtons.forEach((button, index) => {
                     button.innerText = questionData.Answers[index]; // Actualizar el texto de cada botón con las respuestas
@@ -369,6 +369,7 @@
             function PublicChange(){
                 document.getElementById("Change").style.display = "none";
                 Money = Money - 30;
+                loadQuestion()
             }
 
             window.onload = loadQuestion;
