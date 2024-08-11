@@ -160,6 +160,17 @@
             }
 
             function checkAnswer(selectedAnswer) {
+                var button = document.getElementById("ans0");
+                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
+                var button = document.getElementById("ans1");
+                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
+                var button = document.getElementById("ans2");
+                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
+                var button = document.getElementById("ans3");
+                button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
+
+
+
                 if (selectedAnswer === questions[QuestionIndex].CorrectAnswer) {
                     alert("¡Correcto!"); // Mostrar un mensaje si es correcto
                     QuestionIndex++; // Pasar a la siguiente pregunta
@@ -181,23 +192,23 @@
 
             function fiftyFifty(){
                 if (QuestionIndex === 0){
-                    document.getElementById("ans0").style.backgroundColor = "red";
-                    document.getElementById("ans2").style.backgroundColor = "red";
+                    document.getElementById("ans0").style.background = "red";
+                    document.getElementById("ans2").style.background = "red";
                 }
 
                 else if (QuestionIndex === 1){
-                    document.getElementById("ans1").style.backgroundColor = "red";
-                    document.getElementById("ans2").style.backgroundColor = "red";
+                    document.getElementById("ans1").style.background = "red";
+                    document.getElementById("ans2").style.background = "red";
                 }
 
                 else if (QuestionIndex === 2){
-                    document.getElementById("ans0").style.backgroundColor = "red";
-                    document.getElementById("ans3").style.backgroundColor = "red";
+                    document.getElementById("ans0").style.background = "red";
+                    document.getElementById("ans3").style.background = "red";
                 }
 
                 else if (QuestionIndex === 3){
-                    document.getElementById("ans1").style.backgroundColor = "red";
-                    document.getElementById("ans2").style.backgroundColor = "red";
+                    document.getElementById("ans1").style.background = "red";
+                    document.getElementById("ans2").style.background = "red";
                 }
             }
 
