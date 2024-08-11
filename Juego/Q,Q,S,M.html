@@ -117,8 +117,6 @@
                 border-color: white;
                 margin: 0% 35px;
             }
-
-            
         </style>
 
         <script>
@@ -149,7 +147,6 @@
             ]
 
             var Money = 0;
-
             var QuestionIndex = 0;
 
             function loadQuestion () {
@@ -171,9 +168,9 @@
                 button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
                 var button = document.getElementById("ans3");
                 button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
-
+            
                 //Recupera el color original de los botones
-
+            
                 if (selectedAnswer === questions[QuestionIndex].CorrectAnswer) {
                     alert("¡Correcto!"); // Mostrar un mensaje si es correcto
                     QuestionIndex++; // Pasar a la siguiente pregunta
@@ -209,17 +206,17 @@
                     document.getElementById("ans0").style.background = "red";
                     document.getElementById("ans2").style.background = "red";
                 }
-
+            
                 else if (QuestionIndex === 1){
                     document.getElementById("ans1").style.background = "red";
                     document.getElementById("ans2").style.background = "red";
                 }
-
+            
                 else if (QuestionIndex === 2){
                     document.getElementById("ans0").style.background = "red";
                     document.getElementById("ans3").style.background = "red";
                 }
-
+            
                 else if (QuestionIndex === 3){
                     document.getElementById("ans1").style.background = "red";
                     document.getElementById("ans2").style.background = "red";
@@ -239,7 +236,6 @@
             
             window.onload = loadQuestion;
         </script>
-
     </head>
 
     <body>
