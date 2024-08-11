@@ -8,6 +8,9 @@
                 background-image: url(Imagenes/FondoBody2.jpg);
                 background-size: cover;
                 background-repeat: no-repeat;
+            }
+
+            .Body{
                 align-items: center;
                 justify-content: center;
                 display: flex;
@@ -32,7 +35,7 @@
                 text-align: center;
                 color: white;
                 flex: 0 0 100%;
-                margin-top: 10%;
+                margin-top: 7%;
             }
 
             .QuestionBlock p{
@@ -80,6 +83,39 @@
             .AnswerBlock2{
                 flex: 0 0 400px;
             }
+
+            .GameContainer{
+                display: flex;
+            }   
+
+            .ScoreContainer button{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                color: white;
+                font-size: 32px;
+                width: 100px;
+                height: 70px;
+                margin: 0% 35px;
+                border-radius: 50%;
+                border-color: white;
+            }
+
+            .ScoreContainer2{
+                position: absolute;
+                right: 0;
+            }
+
+            .ScoreContainer2 button{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                color: white;
+                font-size: 32px;
+                width: 100px;
+                height: 70px;
+                border-radius: 50%;
+                border-color: white;
+                margin: 0% 35px;
+            }
+
+            
         </style>
 
         <script>
@@ -109,7 +145,9 @@
                 }
             ]
 
-            let QuestionIndex = 0;
+            var Money = 0;
+
+            var QuestionIndex = 0;
 
             function loadQuestion () {
                 var questionData = questions[QuestionIndex];  //Obtener la pregunta del indice actual
@@ -125,6 +163,8 @@
                 if (selectedAnswer === questions[QuestionIndex].CorrectAnswer) {
                     alert("¡Correcto!"); // Mostrar un mensaje si es correcto
                     QuestionIndex++; // Pasar a la siguiente pregunta
+                    Money = Money + 1000
+                    document.getElementById("Cash").innerText = Money;
                     if (QuestionIndex < questions.length) {
                         loadQuestion(); // Cargar la siguiente pregunta si hay más
                     } else {
@@ -135,25 +175,65 @@
                 }
             }
 
+            function ShowCash(){
+                alert("Has ganado: " + Money);
+            }
+
+            function fiftyFifty(){
+                if (QuestionIndex === 0){
+                    document.getElementById("ans0").style.backgroundColor = "red";
+                    document.getElementById("ans2").style.backgroundColor = "red";
+                }
+
+                else if (QuestionIndex === 1){
+                    document.getElementById("ans1").style.backgroundColor = "red";
+                    document.getElementById("ans2").style.backgroundColor = "red";
+                }
+
+                else if (QuestionIndex === 2){
+                    document.getElementById("ans0").style.backgroundColor = "red";
+                    document.getElementById("ans3").style.backgroundColor = "red";
+                }
+
+                else if (QuestionIndex === 3){
+                    document.getElementById("ans1").style.backgroundColor = "red";
+                    document.getElementById("ans2").style.backgroundColor = "red";
+                }
+            }
+
             window.onload = loadQuestion;
         </script>
 
     </head>
 
     <body>
-        <div class="Container">
-            <div class="QuestionBlock">
-                <p id="Question"></p>
+        <div class="GameContainer">
+            <div class="ScoreContainer">
+                <button id="Cash" type="button" onclick="ShowCash()">💲</button>
+                <a href="Start.html"><button>🏃‍♂️</button></a>
             </div>
-    
-            <div class="AnswerBlock1">
-                <button class="answer"></button>
-                <button class="answer"></button>
+            <div class="ScoreContainer2">
+                <button type="button" onclick="fiftyFifty()">50:50</button>
+                <button>📞</button>
+                <button>👨‍👩‍👦‍👦</button>
             </div>
-    
-            <div class="AnswerBlock2">
-                <button class="answer"></button>
-                <button class="answer"></button>
+        </div>
+
+        <div class="Body">
+            <div class="Container">
+                <div class="QuestionBlock">
+                    <p id="Question"></p>
+                </div>
+        
+                <div class="AnswerBlock1">
+                    <button id="ans0" class="answer"></button>
+                    <button id="ans1" class="answer"></button>
+                </div>
+        
+                <div class="AnswerBlock2">
+                    <button id="ans2" class="answer"></button>
+                    <button id="ans3" class="answer"></button>
+                </div>
             </div>
         </div>
     </body>
