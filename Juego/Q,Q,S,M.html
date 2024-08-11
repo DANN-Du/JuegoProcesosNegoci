@@ -247,28 +247,27 @@
                 return RandomIndex;
             }
 
-            function AnswerYes(){
-                    document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Money + "$";
-                    document.getElementById("ans0").style.display = "none";
-                    document.getElementById("ans1").style.display = "none";
-                    document.getElementById("ans2").style.display = "none";
-                    document.getElementById("ans3").style.display = "none";
-                    document.getElementById("Yes").style.display = "none";
-                    document.getElementById("No").style.display = "none";
+            function AnswerYes(){           //Funcion para retirarse con el dinero
+                document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Money + "$";
+                document.getElementById("ans0").style.display = "none";
+                document.getElementById("ans1").style.display = "none";
+                document.getElementById("ans2").style.display = "none";
+                document.getElementById("ans3").style.display = "none";
+                document.getElementById("Yes").style.display = "none";
+                document.getElementById("No").style.display = "none";
                 }
 
-            function AnswerNo(){
-                    document.getElementById("ans0").style.display = "block";
-                    document.getElementById("ans1").style.display = "block";
-                    document.getElementById("ans2").style.display = "block";
-                    document.getElementById("ans3").style.display = "block";
-                    document.getElementById("Yes").style.display = "none";
-                    document.getElementById("No").style.display = "none";
+            function AnswerNo(){           //Funcion para seguir jugando
+                document.getElementById("ans0").style.display = "block";
+                document.getElementById("ans1").style.display = "block";
+                document.getElementById("ans2").style.display = "block";
+                document.getElementById("ans3").style.display = "block";
+                document.getElementById("Yes").style.display = "none";
+                document.getElementById("No").style.display = "none";
                 loadQuestion();
             }
 
-            function loadQuestion () {
-                QuestionCount = QuestionCount + 1;
+            function loadQuestion () {      // Función para cargar la pregunta
                 QuestionIndex = RandomQuestion();
                 if (Name == "" || Name == null) {
                     alert("Por favor ingrese su nombre");
@@ -283,7 +282,7 @@
                 });
             }
 
-            function checkAnswer(selectedAnswer) {
+            function checkAnswer(selectedAnswer) {      // Función para verificar la respuesta
                 var button = document.getElementById("ans0");
                 button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
                 var button = document.getElementById("ans1");
@@ -313,7 +312,9 @@
 
                     else if (QuestionCount < 10) {
                         loadQuestion(); // Cargar la siguiente pregunta si hay más
-                    } else {
+                    } 
+
+                    else {
                         document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Money + "$"; // Mostrar un mensaje si se terminan las preguntas
                         document.getElementById("ans0").style.display = "none";/*Ocultar los botones de respuesta*/
                         document.getElementById("ans1").style.display = "none";
