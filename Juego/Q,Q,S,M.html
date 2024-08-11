@@ -121,36 +121,118 @@
 
         <script>
             var questions = [                       // Aca se escriben y se asignan respuestas a las preguntas
-                {
+                { //pregunta 0
                     Question: "¿Cuales son los colores primarios?",
                     Answers: ["Rojo, Azul y Verde", "Amarillo, Azul y Rojo", "Rojo, Azul y Morado", "Rojo, Azul y Naranja"],
                     CorrectAnswer: 1
                 },
 
-                {
+                { //pregunta 1
                     Question: "¿Cual es el animal mas grande del mundo?",
                     Answers: ["Elefante","Jirafa", "Tiburon Ballena", "Ballena Azul"],
                     CorrectAnswer: 3
                 },
 
-                {
-                    Question: "¿Cual es el planeta mas grande del sistema solar?",
-                    Answers: ["Tierra", "Jupiter", "Saturno", "Urano"],
-                    CorrectAnswer: 2
-                },
-
-                {
+                { //pregunta 2
                     Question: "¿Cual es el pais mas grande del mundo?",
                     Answers: ["Rusia", "China", "Estados Unidos", "Canada"],
                     CorrectAnswer: 0
-                }
+                },
+
+                { //pregunta 3
+                    Question: "¿Cuál es el océano más grande del mundo?",
+                    Answers: ["Océano Atlántico", "Océano Índico", "Océano Ártico", "Océano Pacífico"],
+                    CorrectAnswer: 3
+                },
+
+                { //pregunta 4
+                    Question: "¿Quién pintó la Mona Lisa?",
+                    Answers: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"],
+                    CorrectAnswer: 1
+                },
+
+                {  //pregunta 5
+                    Question: "¿Cuál es el planeta más grande del sistema solar?",
+                    Answers: ["Tierra", "Marte", "Júpiter", "Saturno"],
+                    CorrectAnswer: 2
+                },
+
+                { //pregunta 6
+                    Question: "¿Cuál es la capital de Japón?",
+                    Answers: ["Tokio", "Pekín", "Suel", "Bangkok"],
+                    CorrectAnswer: 0
+                },
+
+                { //pregunta 7
+                    Question: "¿En qué año ocurrió el primer alunizaje?",
+                    Answers: ["1965", "1967", "1969", "1971"],
+                    CorrectAnswer: 2
+                },
+
+                { //pregunta 8
+                    Question: "¿Cuál es el metal más abundante en la Tierra?",
+                    Answers: ["Hierro", "Aluminio", "Cobre", "Oro"],
+                    CorrectAnswer: 0
+                },
+
+                { //pregunta 9
+                    Question: "¿Quién escribió 'Don Quijote de la Mancha'?",
+                    Answers: ["Gabriel García Márquez", "Miguel de Cervantes", "Jorge Luis Borges", "Federico García Lorca"],
+                    CorrectAnswer: 1
+                },
+
+                { //pregunta 10
+                    Question: "¿Cuál es el río más largo del mundo?",
+                    Answers: ["Amazonas", "Nilo", "Yangtsé", "Misisipi"],
+                    CorrectAnswer: 1
+                },
+
+                { //pregunta 11
+                    Question: "¿Cuál es el idioma más hablado en el mundo?",
+                    Answers: ["Español", "Inglés", "Mandarín", "Hindú"],
+                    CorrectAnswer: 2
+                },
+
+                { //pregunta 12
+                    Question: "¿En qué continente se encuentra el desierto del Sahara?",
+                    Answers: ["Asia", "África", "América del Sur", "Oceanía"],
+                    CorrectAnswer: 1
+                },
+
+                { //pregunta 13
+                    Question: "¿Cuál es el país con más habitantes del mundo?",
+                    Answers: ["China", "Estados Unidos", "India", "Indonesia"],
+                    CorrectAnswer: 0 // La respuesta correcta sigue siendo "China"
+                },
+
+                {  //pregunta 14
+                    Question: "¿En qué año cayó el Muro de Berlín?",
+                    Answers: ["1991", "1989", "1993", "1987"],
+                    CorrectAnswer: 1 // La respuesta correcta sigue siendo "1989"
+                },
+
             ]
 
             var Money = 0;
-            var QuestionIndex = 0;
             var Name = localStorage.getItem("Name");
+            var QuestionCount = 0;
+            var ListNum = [];
+
+            function RandomQuestion(){
+                var RandomIndex = Math.floor(Math.random() * questions.length);
+                ListNum.push(RandomIndex);
+                for (var i = 0; i < ListNum.length; i++){
+                    if (RandomIndex === ListNum[i]){
+                        RandomIndex = Math.floor(Math.random() * questions.length);
+                        i = 0;
+                    }
+                }
+                return RandomIndex;
+            }
 
             function loadQuestion () {
+                QuestionCount = QuestionCount + 1;
+                QuestionIndex = RandomQuestion();
                 if (Name == "" || Name == null) {
                     alert("Por favor ingrese su nombre");
                     window.location.href = "Start.html";
@@ -181,7 +263,7 @@
                     QuestionIndex++; // Pasar a la siguiente pregunta
                     Money = Money + 1000
                     document.getElementById("Cash").innerText = Money;
-                    if (QuestionIndex < questions.length) {
+                    if (QuestionCount < 10) {
                         loadQuestion(); // Cargar la siguiente pregunta si hay más
                     } else {
                         document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Money + "$"; // Mostrar un mensaje si se terminan las preguntas
@@ -218,13 +300,68 @@
                 }
             
                 else if (QuestionIndex === 2){
-                    document.getElementById("ans0").style.background = "red";
+                    document.getElementById("ans1").style.background = "red";
                     document.getElementById("ans3").style.background = "red";
                 }
             
                 else if (QuestionIndex === 3){
                     document.getElementById("ans1").style.background = "red";
                     document.getElementById("ans2").style.background = "red";
+                }
+
+                else if (QuestionIndex === 4){
+                    document.getElementById("ans0").style.background = "red";
+                    document.getElementById("ans3").style.background = "red";
+                }
+
+                else if (QuestionIndex === 5){
+                    document.getElementById("ans1").style.background = "red";
+                    document.getElementById("ans3").style.background = "red";
+                }
+
+                else if (QuestionIndex === 6){
+                    document.getElementById("ans3").style.background = "red";
+                    document.getElementById("ans1").style.background = "red";
+                }
+
+                else if (QuestionIndex === 7){
+                    document.getElementById("ans0").style.background = "red";
+                    document.getElementById("ans1").style.background = "red";
+                }
+
+                else if (QuestionIndex === 8){
+                    document.getElementById("ans1").style.background = "red";
+                    document.getElementById("ans3").style.background = "red";
+                }
+
+                else if (QuestionIndex === 9){
+                    document.getElementById("ans3").style.background = "red";
+                    document.getElementById("ans2").style.background = "red";
+                }
+
+                else if (QuestionIndex === 10){
+                    document.getElementById("ans0").style.background = "red";
+                    document.getElementById("ans3").style.background = "red";
+                }
+
+                else if (QuestionIndex === 11){
+                    document.getElementById("ans0").style.background = "red";
+                    document.getElementById("ans3").style.background = "red";
+                }
+
+                else if (QuestionIndex === 12){
+                    document.getElementById("ans0").style.background = "red";
+                    document.getElementById("ans2").style.background = "red";
+                }
+
+                else if (QuestionIndex === 13){
+                    document.getElementById("ans3").style.background = "red";
+                    document.getElementById("ans1").style.background = "red";
+                }
+
+                else if (QuestionIndex === 14){
+                    document.getElementById("ans0").style.background = "red";
+                    document.getElementById("ans3").style.background = "red";
                 }
                 document.getElementById("Btn50").style.display = "none";
             }
