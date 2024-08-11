@@ -56,7 +56,6 @@
                 font-size: 35px;
                 color: white;
                 clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-                border-color: white;
             }
 
             .AnswerBlock2 button{
@@ -71,7 +70,6 @@
                 font-size: 35px;
                 color: white;
                 clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-                border-color: white;
             }
 
             button:hover{
@@ -116,6 +114,25 @@
                 border-radius: 50%;
                 border-color: white;
                 margin: 0% 35px;
+            }
+
+            .SiNo{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .SiNo button{
+                background: linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129));
+                font-size: 50px;
+                padding: 40px;
+                width: 800%;
+                height: 200%;
+                margin: 0% 20%;
+                color: white;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                display: none;
+
             }
         </style>
 
@@ -230,6 +247,26 @@
                 return RandomIndex;
             }
 
+            function AnswerYes(){
+                    document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Money + "$";
+                    document.getElementById("ans0").style.display = "none";
+                    document.getElementById("ans1").style.display = "none";
+                    document.getElementById("ans2").style.display = "none";
+                    document.getElementById("ans3").style.display = "none";
+                    document.getElementById("Yes").style.display = "none";
+                    document.getElementById("No").style.display = "none";
+                }
+
+            function AnswerNo(){
+                    document.getElementById("ans0").style.display = "block";
+                    document.getElementById("ans1").style.display = "block";
+                    document.getElementById("ans2").style.display = "block";
+                    document.getElementById("ans3").style.display = "block";
+                    document.getElementById("Yes").style.display = "none";
+                    document.getElementById("No").style.display = "none";
+                loadQuestion();
+            }
+
             function loadQuestion () {
                 QuestionCount = QuestionCount + 1;
                 QuestionIndex = RandomQuestion();
@@ -263,7 +300,18 @@
                     QuestionIndex++; // Pasar a la siguiente pregunta
                     Money = Money + 1000
                     document.getElementById("Cash").innerText = Money;
-                    if (QuestionCount < 10) {
+
+                    if (QuestionCount == 5 || QuestionCount == 7){  // Mostrar un mensaje si se llega a la pregunta 5 o 7 donde pregunte si desea seguir o retirarse
+                        document.getElementById("Question").innerHTML = "Deseas Retirarte y llevarte a casa: " + Money + "$, "+ "o seguir jugando y arriesgarlo todo?";
+                        document.getElementById("ans0").style.display = "none";
+                        document.getElementById("ans1").style.display = "none";
+                        document.getElementById("ans2").style.display = "none";
+                        document.getElementById("ans3").style.display = "none";
+                        document.getElementById("Yes").style.display = "block";
+                        document.getElementById("No").style.display = "block";
+                    }
+
+                    else if (QuestionCount < 10) {
                         loadQuestion(); // Cargar la siguiente pregunta si hay más
                     } else {
                         document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Money + "$"; // Mostrar un mensaje si se terminan las preguntas
@@ -404,6 +452,10 @@
                     <button id="ans3" class="answer"></button>
                 </div>
             </div>
+                <div class="SiNo">
+                    <button id="Yes" onclick="AnswerYes()">Si</button>
+                    <button id="No" onclick="AnswerNo()">No</button>
+                </div>
         </div>
     </body>
 </html>
