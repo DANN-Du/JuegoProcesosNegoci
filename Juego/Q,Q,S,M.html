@@ -172,7 +172,7 @@
                 var button = document.getElementById("ans3");
                 button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
 
-
+                //Recupera el color original de los botones
 
                 if (selectedAnswer === questions[QuestionIndex].CorrectAnswer) {
                     alert("¡Correcto!"); // Mostrar un mensaje si es correcto
@@ -182,7 +182,11 @@
                     if (QuestionIndex < questions.length) {
                         loadQuestion(); // Cargar la siguiente pregunta si hay más
                     } else {
-                        alert("¡Ganaste! Has respondido todas las preguntas correctamente."); // Fin del juego si se acabaron las preguntas
+                        document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Money + "$"; // Mostrar un mensaje si se terminan las preguntas
+                        document.getElementById("ans0").style.display = "none";
+                        document.getElementById("ans1").style.display = "none";
+                        document.getElementById("ans2").style.display = "none";
+                        document.getElementById("ans3").style.display = "none";
                     }
                 } else {
                     Money = 0;
@@ -200,6 +204,7 @@
             }
 
             function fiftyFifty(){
+                Money = Money - 50;
                 if (QuestionIndex === 0){
                     document.getElementById("ans0").style.background = "red";
                     document.getElementById("ans2").style.background = "red";
@@ -224,10 +229,12 @@
 
             function PublicCall(){
                 document.getElementById("Call").style.display = "none";
+                Money = Money - 30;
             }
 
             function PublicHelp(){
                 document.getElementById("Help").style.display = "none";
+                Money = Money - 35;
             }
             
             window.onload = loadQuestion;
