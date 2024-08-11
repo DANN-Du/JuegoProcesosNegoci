@@ -78,15 +78,53 @@
         </style>
 
         <script>
-            function ChangeQuestion(){
-                var ListQuestion = ["¿Cual es la Importancia de los Nichos?", "¿Cual es la empresa que mas usas actualmente?", "¿Cual es la importancia de la publicidad?"];
-                var ListAnswer1 = [] //Agregar todas las respuestas que iran en la casilla 1
-                var ListAnswer2 = [] //Agregar todas las respuestas que iran en la casilla 2
-                var ListAnswer3 = [] //Agregar todas las respuestas que iran en la casilla 3
-                var ListAnswer4 = [] //Agregar todas las respuestas que iran en la casilla 4
-                document.getElementById("Question").innerHTML = [];
+            var questions = [                       // Aca se escriben y se asignan respuestas a las preguntas
+                {
+                    Question: "¿Cuales son los colores primarios?",
+                    Answers: ["Rojo, Azul y Verde", "Amarillo, Azul y Rojo", "Rojo, Azul y Morado", "Rojo, Azul y Naranja"],
+                    CorrectAnswer: 1
+                },
 
+                {
+                    Question: "¿Cual es el animal mas grande del mundo?",
+                    Answers: ["Elefante", "Ballena Azul", "Jirafa", "Tiburon Ballena"],
+                    CorrectAnswer: 1
+                },
+
+                {
+                    Question: "¿Cual es el planeta mas grande del sistema solar?",
+                    Answers: ["Tierra", "Jupiter", "Saturno", "Urano"],
+                    CorrectAnswer: 2
+                }
+            ]
+
+            let QuestionIndex = 0;
+
+            function loadQuestion () {
+                var questionData = questions[QuestionIndex];  //Obtener la pregunta del indice actual
+                document.getElementById("Question").innerText = questionData.Question; //Mostrar la pregunta en el HTML
+                const answerButtons = document.querySelectorAll('.answer');
+                answerButtons.forEach((button, index) => {
+                    button.innerText = questionData.Answers[index]; // Actualizar el texto de cada botón con las respuestas
+                    button.setAttribute("onclick", `checkAnswer(${index})`);
+                });
             }
+
+            function checkAnswer(selectedAnswer) {
+                if (selectedAnswer === questions[QuestionIndex].CorrectAnswer) {
+                    alert("¡Correcto!"); // Mostrar un mensaje si es correcto
+                    QuestionIndex++; // Pasar a la siguiente pregunta
+                    if (QuestionIndex < questions.length) {
+                        loadQuestion(); // Cargar la siguiente pregunta si hay más
+                    } else {
+                        alert("¡Ganaste! Has respondido todas las preguntas correctamente."); // Fin del juego si se acabaron las preguntas
+                    }
+                } else {
+                    alert("Incorrecto. Fin del juego."); // Fin del juego si la respuesta es incorrecta
+                }
+            }
+
+            window.onload = loadQuestion;
         </script>
 
     </head>
@@ -94,17 +132,17 @@
     <body>
         <div class="Container">
             <div class="QuestionBlock">
-                <p id="Question">"¿Cuales son los principales problemas en las empresas?"</p>
+                <p id="Question"></p>
             </div>
     
             <div class="AnswerBlock1">
-                <button id="Answer1">Porque si</button>
-                <button id="Answer2">Yo que voy a saber</button>
+                <button class="answer"></button>
+                <button class="answer"></button>
             </div>
     
             <div class="AnswerBlock2">
-                <button id="Answer3">Por culpa de petro</button>
-                <button id="Answer4">Mejor los busco en Chat Gpt</button>
+                <button class="answer"></button>
+                <button class="answer"></button>
             </div>
         </div>
     </body>
