@@ -148,10 +148,15 @@
 
             var Money = 0;
             var QuestionIndex = 0;
+            var Name = localStorage.getItem("Name");
 
             function loadQuestion () {
+                if (Name == "" || Name == null) {
+                    alert("Por favor ingrese su nombre");
+                    window.location.href = "Start.html";
+                }
                 var questionData = questions[QuestionIndex];  //Obtener la pregunta del indice actual
-                document.getElementById("Question").innerText = questionData.Question; //Mostrar la pregunta en el HTML
+                document.getElementById("Question").innerText = "Señ@r "+ Name + ", " + questionData.Question; //Mostrar la pregunta en el HTML
                 const answerButtons = document.querySelectorAll('.answer');
                 answerButtons.forEach((button, index) => {
                     button.innerText = questionData.Answers[index]; // Actualizar el texto de cada botón con las respuestas
@@ -224,16 +229,11 @@
                 document.getElementById("Btn50").style.display = "none";
             }
 
-            function PublicCall(){
-                document.getElementById("Call").style.display = "none";
+            function PublicChange(){
+                document.getElementById("Change").style.display = "none";
                 Money = Money - 30;
             }
 
-            function PublicHelp(){
-                document.getElementById("Help").style.display = "none";
-                Money = Money - 35;
-            }
-            
             window.onload = loadQuestion;
         </script>
     </head>
@@ -246,8 +246,7 @@
             </div>
             <div class="ScoreContainer2">
                 <button id="Btn50" type="button" onclick="fiftyFifty()">50:50</button>
-                <button id="Call" type="button" onclick="PublicCall()">📞</button>
-                <button id="Help" type="button" onclick="PublicHelp()">👨‍👩‍👦‍👦</button>
+                <button id="Change" type="button" onclick="PublicChange()">💱</button>
             </div>
         </div>
 

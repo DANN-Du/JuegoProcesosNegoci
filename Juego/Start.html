@@ -9,10 +9,33 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                flex-direction: column;
+            }
+
+            .UsuaContainer{
+                background: linear-gradient(to right, rgb(12, 12, 113), rgb(42, 42, 161));
+                display: flex;
+                padding: 20px;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin-top: 15%;
+            }
+
+            .UsuaContainer label{
+                font-size: 40px;
+                color: white;
+            }
+
+            .UsuaContainer input{
+                font-size: 30px;
+                width: 500px;
+                height: 40px;
+                text-align: center;
             }
 
             .Container{
-                margin-top: 35%;
+                margin-top: 12%;
             }
 
             .Container a {
@@ -33,12 +56,24 @@
                 transition: 0.5s;
             }
         </style>
+
+        <script>
+            function SaveName(){
+                var Name = document.getElementById("Name").value;
+                localStorage.setItem("Name", Name);
+            }
+
+        </script>
     </head>
 
     <body>
+        <div class="UsuaContainer">
+            <label for="Name">Ingrese su nombre</label><br>
+            <input type="text" id="Name">
+        </div>
         <div class="Container">
             <a href="Instruction.html"><button>Instrucciones</button></a>
-            <a href="Q,Q,S,M.html"><button>Jugar</button></a>
+            <a href="Q,Q,S,M.html"><button type="button" onclick="SaveName()">Jugar</button></a>
         </div>
     </body>
 </html>
