@@ -185,7 +185,13 @@
                         alert("¡Ganaste! Has respondido todas las preguntas correctamente."); // Fin del juego si se acabaron las preguntas
                     }
                 } else {
-                    alert("Incorrecto. Fin del juego."); // Fin del juego si la respuesta es incorrecta
+                    Money = 0;
+                    document.getElementById("Question").innerHTML = "¡Incorrecto!, Lo has perdido todo: " + Money + "$"; 
+                    document.getElementById("Cash").innerText = Money;
+                    document.getElementById("ans0").style.display = "none";
+                    document.getElementById("ans1").style.display = "none";
+                    document.getElementById("ans2").style.display = "none";
+                    document.getElementById("ans3").style.display = "none";
                 }
             }
 
