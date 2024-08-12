@@ -269,6 +269,7 @@
 
             function loadQuestion () {      // Función para cargar la pregunta
                 QuestionIndex = RandomQuestion();
+                QuestionCount ++
                 if (Name == "" || Name == null) {
                     alert("Por favor ingrese su nombre");
                     window.location.href = "Start.html";
@@ -300,7 +301,7 @@
                     Money = Money + 1000
                     document.getElementById("Cash").innerText = Money;
 
-                    if (QuestionCount == 5 || QuestionCount == 7){  // Mostrar un mensaje si se llega a la pregunta 5 o 7 donde pregunte si desea seguir o retirarse
+                    if (QuestionCount === 5 || QuestionCount === 7){  // Mostrar un mensaje si se llega a la pregunta 5 o 7 donde pregunte si desea seguir o retirarse
                         document.getElementById("Question").innerHTML = "Deseas Retirarte y llevarte a casa: " + Money + "$, "+ "o seguir jugando y arriesgarlo todo?";
                         document.getElementById("ans0").style.display = "none";
                         document.getElementById("ans1").style.display = "none";
