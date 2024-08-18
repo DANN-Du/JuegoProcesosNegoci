@@ -233,9 +233,9 @@
             var Name = localStorage.getItem("Name");
             var QuestionCount = 0;
             var ListNum = [];
+            var RandomIndex = Math.floor(Math.random() * questions.length);
 
             function RandomQuestion(){
-                var RandomIndex = Math.floor(Math.random() * questions.length);
                 ListNum.push(RandomIndex);
                 for (var i = 0; i < ListNum.length; i++){
                     if (RandomIndex === ListNum[i]){
