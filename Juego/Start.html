@@ -65,6 +65,7 @@
 
             function checkName(){
                 var Name = document.getElementById("Name").value;
+                localStorage.setItem("Name", Name);
                 if (Name == null || Name == ""){
                     alert("Por favor, ingrese un nombre");
                     window.location.href = "Start.html";
