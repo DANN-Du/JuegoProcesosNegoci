@@ -63,6 +63,18 @@
                 localStorage.setItem("Name", Name);
             }
 
+            function checkName(){
+                var Name = document.getElementById("Name").value;
+                if (Name == null || Name == ""){
+                    alert("Por favor, ingrese un nombre");
+                    window.location.href = "Start.html";
+                }
+
+                else{
+                    window.location.href = "Instruction.html";
+                }
+            }
+
         </script>
     </head>
 
@@ -72,7 +84,7 @@
             <input type="text" id="Name">
         </div>
         <div class="Container">
-            <a href="Instruction.html"><button>Instrucciones</button></a>
+            <button type="button" onclick="checkName()">Instrucciones</button>
             <a href="Q,Q,S,M.html"><button type="button" onclick="SaveName()">Jugar</button></a>
         </div>
     </body>

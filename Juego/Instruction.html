@@ -49,6 +49,17 @@
             }
 
         </style>
+
+        <script>
+            var Name = localStorage.getItem("Name");
+
+            function SaveName(){
+                if (Name == null || Name == ""){
+                    alert("Por favor, ingrese un nombre");
+                    window.location.href = "Start.html";
+                }
+            }
+        </script>
     </head>
 
     <body>
