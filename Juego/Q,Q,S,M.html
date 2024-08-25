@@ -229,7 +229,9 @@
 
             ]
 
-            var Money = 0;
+            var Fibonacci = 0;
+            var preFibonacci1 = 0;
+            var preFibonacci2 = 0;
             var Name = localStorage.getItem("Name");
             var QuestionCount = 0;
             var ListNum = [];
@@ -271,16 +273,27 @@
                 button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
                 var button = document.getElementById("ans3");
                 button.style.background = "linear-gradient(to right, rgb(4, 4, 68), rgb(39, 47, 129))";
-            
+
                 //Recupera el color original de los botones
             
                 if (selectedAnswer === questions[QuestionIndex].CorrectAnswer) {
                     alert("¡Correcto!"); // Mostrar un mensaje si es correcto
-                    Money = Money + 1000
-                    document.getElementById("Cash").innerText = Money;
+                    
+                    if (preFibonacci1 === 0 && preFibonacci2 === 0){ //inicializar el primer numero de fibonacci
+                        Fibonacci = 1000;
+                    }
+
+                    else{ //sigueitne numero de fibonacci
+                        Fibonacci = preFibonacci1 + preFibonacci2;
+                    }
+                    //actualizamos los valores de fibonacci
+                    preFibonacci2 = preFibonacci1;
+                    preFibonacci1 = Fibonacci;
+
+                    document.getElementById("Cash").innerText = Fibonacci;                    
 
                     if (QuestionCount === 5 || QuestionCount === 7){  // Mostrar un mensaje si se llega a la pregunta 5 o 7 donde pregunte si desea seguir o retirarse
-                        document.getElementById("Question").innerHTML = "Deseas Retirarte y llevarte a casa: " + Money + "$, "+ "o seguir jugando y arriesgarlo todo?";
+                        document.getElementById("Question").innerHTML = "Deseas Retirarte y llevarte a casa: " + Fibonacci + "$, "+ "o seguir jugando y arriesgarlo todo?";
                         document.getElementById("ans0").style.display = "none";
                         document.getElementById("ans1").style.display = "none";
                         document.getElementById("ans2").style.display = "none";
@@ -294,16 +307,16 @@
                     } 
 
                     else {
-                        document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Money + "$"; // Mostrar un mensaje si se terminan las preguntas
+                        document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Fibonacci + "$"; // Mostrar un mensaje si se terminan las preguntas
                         document.getElementById("ans0").style.display = "none";/*Ocultar los botones de respuesta*/
                         document.getElementById("ans1").style.display = "none";
                         document.getElementById("ans2").style.display = "none";
                         document.getElementById("ans3").style.display = "none";
                     }
                 } else {
-                    Money = 0;
-                    document.getElementById("Question").innerHTML = "¡Incorrecto!, Lo has perdido todo: " + Money + "$"; 
-                    document.getElementById("Cash").innerText = Money;
+                    Fibonacci = 0;
+                    document.getElementById("Question").innerHTML = "¡Incorrecto!, Lo has perdido todo: " + Fibonacci + "$"; 
+                    document.getElementById("Cash").innerText = Fibonacci;
                     document.getElementById("ans0").style.display = "none";
                     document.getElementById("ans1").style.display = "none";
                     document.getElementById("ans2").style.display = "none";
@@ -312,7 +325,7 @@
             }
 
             function AnswerYes(){           //Funcion para retirarse con el dinero
-                document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Money + "$";
+                document.getElementById("Question").innerHTML = "¡Felicidades!, Has ganado: " + Fibonacci + "$";
                 document.getElementById("ans0").style.display = "none";
                 document.getElementById("ans1").style.display = "none";
                 document.getElementById("ans2").style.display = "none";
@@ -332,11 +345,10 @@
             }
 
             function ShowCash(){
-                alert("Has ganado: " + Money);
+                alert("Has ganado: " + Fibonacci);
             }
 
             function fiftyFifty(){
-                Money = Money - 50;
                 if (QuestionIndex === 0){
                     document.getElementById("ans0").style.background = "red";
                     document.getElementById("ans2").style.background = "red";
@@ -416,7 +428,6 @@
 
             function PublicChange(){
                 document.getElementById("Change").style.display = "none";
-                Money = Money - 30;
                 loadQuestion()
             }
 
